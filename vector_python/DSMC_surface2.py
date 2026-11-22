@@ -1,6 +1,9 @@
+import os
+
 def DSMC_surface2(filename, TRI, pX, pY, pZ, hflag):
+    tmpname = filename.replace(".txt", ".tmp")
     # Open file for writing
-    with open(filename, 'wt') as fid:
+    with open(tmpname, 'wt') as fid:
         # Data properties
         num_TR, _ = TRI.shape
         num_PT, = pX.shape
@@ -25,3 +28,4 @@ def DSMC_surface2(filename, TRI, pX, pY, pZ, hflag):
             )
 
     # File closed automatically
+    os.replace(tmpname, filename)
