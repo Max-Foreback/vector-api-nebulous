@@ -10,7 +10,7 @@ from vector_python.CD_RB_ENGINEERING4 import CD_RB_ENGINEERING4
 from vector_python.geometry_wizard import geometry_wizard
 
 
-def MAIN(obj_type, D, L, A, Phi, Theta, Ta, Va, n_O, n_O2, n_N2, n_He, n_H, GSI_model, alpha, m_s, POSVEL, fnamesurf):
+def MAIN(obj_type, D, L, A, Phi, Theta, Ta, Va, n_O, n_O2, n_N2, n_He, n_H, GSI_model, alpha, m_s, POSVEL, fnamesurf, id_):
 # %GSI_model:  Method of energy accommodation coefficient computation and GSI model selection
 # %           -1:SESAM model, 0:set to constant value,  2: goodman model,
 # %	    3:CLL quasi-specular reflection with alpha_n = 0.75, sigma_t = 0.9,
@@ -81,9 +81,9 @@ def MAIN(obj_type, D, L, A, Phi, Theta, Ta, Va, n_O, n_O2, n_N2, n_He, n_H, GSI_
         dir_path = os.path.dirname(fnamesurf)
         # Get the name minus the extension
         fname = os.path.splitext(os.path.basename(fnamesurf))[0]
-        tri_file = os.path.join(dir_path, 'TRIprops.txt')
+        tri_file = os.path.join(dir_path, f'TRIprops_{id_}.txt')
         png_file = os.path.join(dir_path, f'geometry-{fname}.png')
-        geometry_wizard(fnamesurf, tri_file, 0, 1, ViewDir)
+        geometry_wizard(fnamesurf, tri_file, 0, 0, ViewDir)
         # delay import until needed when plotting the files
         import matplotlib.pyplot as plt
         plt.gcf()
