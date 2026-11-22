@@ -1,8 +1,8 @@
 import numpy as np
 
-from vector_python.schamberg_plate2 import schamberg_plate2
-from vector_python.sentman import sentman
-from vector_python.surface_geometry2 import surface_geometry2
+from .schamberg_plate2 import schamberg_plate2
+from .sentman import sentman
+from .surface_geometry2 import surface_geometry2
 
 
 def polygon_area(x, y):
@@ -82,7 +82,12 @@ def PLATEaeroCoeffs(TRI, V, n, m, Ti, Tw, accom, EPSIL, nu, phi_o, m_surface, ff
     # angles of attack for each element
     # loop over triangles
     for k in range(ntri):
-        N, Ct, A = getTRIprops(TRI[k, 0:9])  # triangle normal and center, and planform area
+        res = getTRIprops(TRI[k, 0:9])
+        if res[0] is None:
+            continue
+
+        N, Ct, A = res
+        #N, Ct, A = getTRIprops(TRI[k, 0:9])  # triangle normal and center, and planform area
         PAM, _, _ = surface_geometry2(TRI[k, 0:9], N, V / Vmag, 0, 0)  # compute the projected area map of a single triangle
         CENTROIDS[k, 0:3] = Ct + Rcm
         dir_flag = np.sign(np.dot(V, N))  # +1 facing away from flow, -1 facing into flow
@@ -108,7 +113,7 @@ def PLATEaeroCoeffs(TRI, V, n, m, Ti, Tw, accom, EPSIL, nu, phi_o, m_surface, ff
 
         # compute the in-plane and out-of-plane coefficients
         alph = np.arccos(np.dot(V / Vmag, N / np.linalg.norm(N)))  # ?
-        attk = -1 * dir_flag * np.arccos(np.dot(V / Vmag, a_vec))  # angle of attack
+        #attk = -1 * dir_flag * np.arccos(np.dot(V / Vmag, a_vec))  # angle of attack
 
         # Function to calculate dotted_VN
         def calculate_dotted_VN(V, N):
@@ -117,7 +122,7 @@ def PLATEaeroCoeffs(TRI, V, n, m, Ti, Tw, accom, EPSIL, nu, phi_o, m_surface, ff
             dotted_VN = np.arccos(np.dot(V / Vmag, N / Nmag))
             return dotted_VN
 
-        dotted_VN = np.repeat(calculate_dotted_VN(V, N), k)  # array to store
+        dotted_VN = np.repeat(calculate_dotted_VN(V, N), k)  # array to store the results
 
         if GSI_model == 3:  # CLL quasi-specular reflection
             alpha_n = 0.75
@@ -216,9 +221,13 @@ def getTRIprops(TRI):
 
     # right-handed normal?
     N = np.cross(l1, l2)
+    normN = np.linalg.norm(N)
 
-    # normalize each entry
-    N /= np.linalg.norm(N)
+    # Degenerate triangle
+    if normN == 0:
+        return None, None, 0.0
+
+    N /= normN
 
     # triangle centroid
     Ct = np.sum([A, B, C], axis=0) / 3
