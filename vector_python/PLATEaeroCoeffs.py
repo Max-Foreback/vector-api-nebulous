@@ -117,10 +117,7 @@ def PLATEaeroCoeffs(TRI, V, n, m, Ti, Tw, accom, EPSIL, nu, phi_o, m_surface, ff
             dotted_VN = np.arccos(np.dot(V / Vmag, N / Nmag))
             return dotted_VN
 
-        dotted_VN = np.zeros(k)  # Initialize an array to store the results
-
-        for i in range(k):
-            dotted_VN[i] = calculate_dotted_VN(V, N)
+        dotted_VN = np.repeat(calculate_dotted_VN(V, N), k)  # array to store
 
         if GSI_model == 3:  # CLL quasi-specular reflection
             alpha_n = 0.75
