@@ -2,12 +2,12 @@ import os
 
 import numpy as np
 
-from vector_python.CD_sphere2 import CD_sphere2
-from vector_python.CD_plate_effective import CD_plate_effective
-from vector_python.CD_cyl_effective import CD_cyl_effective
-from vector_python.CD_triFile_effective import CD_triFile_effective
-from vector_python.CD_RB_ENGINEERING4 import CD_RB_ENGINEERING4
-from vector_python.geometry_wizard import geometry_wizard
+from .CD_sphere2 import CD_sphere2
+from .CD_plate_effective import CD_plate_effective
+from .CD_cyl_effective import CD_cyl_effective
+from .CD_triFile_effective import CD_triFile_effective
+from .CD_RB_ENGINEERING4 import CD_RB_ENGINEERING4
+from .geometry_wizard import geometry_wizard
 
 
 def MAIN(obj_type, D, L, A, Phi, Theta, Ta, Va, n_O, n_O2, n_N2, n_He, n_H, GSI_model, alpha, m_s, POSVEL, fnamesurf, id_):

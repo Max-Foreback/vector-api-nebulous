@@ -1,6 +1,6 @@
 import numpy as np
 
-from vector_python.PLATEaeroCoeffs import PLATEaeroCoeffs
+from .PLATEaeroCoeffs import PLATEaeroCoeffs
 
 
 def CD_triFile_effective(TRS, V_plate_in, NO_DENS, MASS_MAT, T_atm, T_w, accom, EPSILprops, NU, PHI_O, M_SURF, ff, Rcm, set_acqs, htrhmFlag, material, GSI_model):

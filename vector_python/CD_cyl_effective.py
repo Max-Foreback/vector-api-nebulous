@@ -1,6 +1,6 @@
 import numpy as np
 
-from vector_python.CD_cyl import CD_cyl
+from .CD_cyl import CD_cyl
 
 def CD_cyl_effective(Vt, NO_DENS, Tatm, Tw, accom, D, L, pitch):
     # pitch is in radians

@@ -1,7 +1,7 @@
 import numpy as np
 
-from vector_python.obliqueCylProjection import obliqueCylProjection
-from vector_python.sentman import sentman
+from .obliqueCylProjection import obliqueCylProjection
+from .sentman import sentman
 
 def CD_cyl(D, L, accomm, pitch, m, V_inf, T_inf, T_surf):
     # computes the drag coefficient of a capped cylinder (pitch in radians)

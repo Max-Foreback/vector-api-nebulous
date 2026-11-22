@@ -1,5 +1,5 @@
-from vector_python.make_surface import make_surface
-from vector_python.DSMC_surface2 import DSMC_surface2
+from .make_surface import make_surface
+from .DSMC_surface2 import DSMC_surface2
 
 def geometry_wizard(file_in, file_out, hflag, plt_flag, ViewDir):
     # hflag - header flag

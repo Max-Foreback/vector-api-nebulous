@@ -1,7 +1,7 @@
 import numpy as np
 
-from vector_python.sentman import sentman
-from vector_python.CLL_plate import CLL_plate
+from .sentman import sentman
+from .CLL_plate import CLL_plate
 
 def CD_plate_effective(alph, Vt, NO_DENS, MASS_MAT, Tatm, Tw, accom, ff, nu, phi_o, ms, set_acqs, A, material, GSI_model):
     # constants

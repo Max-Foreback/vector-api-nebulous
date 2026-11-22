@@ -1,8 +1,8 @@
 import numpy as np
 
-from vector_python.sentman import sentman
-from vector_python.CLL_sphere import CLL_sphere
-from vector_python.sphere_incident_angle_weighting import sphere_incident_angle_weighting
+from .sentman import sentman
+from .CLL_sphere import CLL_sphere
+from .sphere_incident_angle_weighting import sphere_incident_angle_weighting
 
 def CD_sphere2(Vt, NO_DENS, MASS_MAT, Tatm, Tw, accom, ms, set_acqs, htrhmFlag, r, material, GSI_model):
     # constants

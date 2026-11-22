@@ -1,6 +1,6 @@
 import numpy as np
 
-from vector_python.sentman import sentman
+from .sentman import sentman
 
 def CD_sphere(Vt, NO_DENS, Tatm, Tw, accom):
     # constants

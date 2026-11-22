@@ -2,7 +2,7 @@ from math import erf
 
 import numpy as np
 
-from vector_python.langmuirKmodel_v3 import langmuirKmodel_v3
+from .langmuirKmodel_v3 import langmuirKmodel_v3
 
 def CD_RB_ENGINEERING4(ro, mb, Ta, Vp, ms_amu, accom_mode, Xp, Eb, Kf, Ko):
     # ACCOMMODATION ONLY
