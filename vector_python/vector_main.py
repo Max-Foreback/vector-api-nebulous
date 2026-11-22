@@ -85,14 +85,14 @@ def MAIN(obj_type, D, L, A, Phi, Theta, Ta, Va, n_O, n_O2, n_N2, n_He, n_H, GSI_
         png_file = os.path.join(dir_path, f'geometry-{fname}.png')
         geometry_wizard(fnamesurf, tri_file, 0, 0, ViewDir)
         # delay import until needed when plotting the files
-        import matplotlib.pyplot as plt
-        plt.gcf()
-        plt.set_cmap('gray')
-        plt.xticks([])
-        plt.yticks([])
-        plt.gca().set_zticks([])
-        plt.savefig(png_file, bbox_inches='tight', dpi=300)
-        plt.close('all')
+        # import matplotlib.pyplot as plt
+        # plt.gcf()
+        # plt.set_cmap('gray')
+        # plt.xticks([])
+        # plt.yticks([])
+        # plt.gca().set_zticks([])
+        # plt.savefig(png_file, bbox_inches='tight', dpi=300)
+        # plt.close('all')
 
         TRS = np.loadtxt(tri_file)
         n_triangles = len(TRS)
